@@ -1,9 +1,9 @@
 
 -- delete table
--- DROP TABLE ecommerce_app;
+-- DROP TABLE users;
 
 -- create table
-CREATE TABLE ecommerce_app (
+CREATE TABLE users (
 	user_id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
@@ -18,11 +18,11 @@ CREATE TABLE ecommerce_app (
 
 
 -- insert into table
-INSERT INTO ecommerce_app ( username, email, password_hash, full_name, address, city, country, postal_code, created_at) VALUES
+INSERT INTO users ( username, email, password_hash, full_name, address, city, country, postal_code, created_at) VALUES
 (
   'cloud7', 
   'cloud@gmail.com', 
-  'lfkjfsdjfosdjflsdjflshulsdfhgiousdfhgisudfhiusdfguisdf', 
+  'abc', 
   'Cloud Strife', 
   null,
   null, 
@@ -32,6 +32,6 @@ INSERT INTO ecommerce_app ( username, email, password_hash, full_name, address, 
 );
 
 -- select everything
-SELECT * FROM ecommerce_app;
+SELECT * FROM users;
 
 
