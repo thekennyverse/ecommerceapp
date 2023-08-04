@@ -16,18 +16,19 @@ const loginUser = async (loginData) => {
 };
 
 const searchUsersByUsername = async (username) => {
-    let users = db.any('SELECT * from users WHERE username LIKE $1', `%${username}%`);
-    if (users.length === 0) users = db.any('SELECT * from users');
-    return users;
+// representing the searchbar 
+    if (username === "null") return db.any('SELECT * from users');
+    return db.any('SELECT * from users WHERE username ILIKE $1', `%${username}%`);
 };
 
 const createUser = async (userData) => {
     const { username, email, password_hash, full_name, address, city, country, postal_code } = userData;
     const created_at = new Date();
     await db.any(`INSERT INTO users ( username, email, password_hash, full_name, address, city, country, postal_code, created_at) VALUES
-    ($1, $2, $3, $4, $5, $6, $7, $8, $9);`, [username.tolowerCase(), email, password_hash, full_name, address, city, country, postal_code, created_at]);
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9);`, [username.toLowerCase(), email, password_hash, full_name, address, city, country, postal_code, created_at]);
     return username;
 }
+
 
 const updateUser = async (userData) => {
     const { username, email, password_hash, full_name, address, city, country, postal_code, user_id } = userData;
