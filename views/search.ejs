@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Search Manga</h2>
+
+    <form id="searchForm" action="/products/search" method="GET">
+        <input type="text" name="title" placeholder="Find Manga">
+        <input type="submit" value="Search">
+    </form>
+    <div>
+        <% results.forEach(function(item){ %>
+            <h3><%= item.title %></li>
+            <img src="<%= item.picture_url %>">
+        <% }); %>
+    </div>
+
+
+</body>
+</html>

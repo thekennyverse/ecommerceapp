@@ -2,11 +2,13 @@ const express = require('express');
 const server = express();
 const DBUsers = require('./users');
 const DBProducts = require('./products');
+const helper = require('./helper')
 const session = require('express-session');
 const port= 4000;
 
 server.use(express.json());
 server.use(express.urlencoded({extended: true}));
+server.set('view engine', 'ejs'); // Set EJS as the template engine
 
 // Add session middleware
 server.use(session({
@@ -132,10 +134,17 @@ server.listen(port, () => { console.log("server is running on port 4000");
 // product
 
 // this should Get all products
-server.get('/products/search/:title', async (req, res) => {
-  const title = req.params.title;
+server.get('/products/search/', async (req, res) => {
+  let { limit, pageNumber , title} = req.query;
+
   const products = await DBProducts.searchProductsByTitle(title);
-  res.send(products);
+  if ((!limit || limit < 1) || (!pageNumber || pageNumber < 1)){
+      limit = 8;
+      pageNumber = 1;
+  } 
+
+  const results = helper.paginate(Number(limit), Number(pageNumber), products);
+  res.render('search', { results });
 });
 
 server.get('/products/count/total', async (req, res) => {
@@ -144,7 +153,7 @@ server.get('/products/count/total', async (req, res) => {
 });
   
 // this should Get single product 
-server.get('/products/:id', async (req, res) => {
+server.get('/product/:id', async (req, res) => {
   const id = req.params.id;
   const product = await DBProducts.getProductById(id);
   
