@@ -210,3 +210,11 @@ server.post('/cart/remove/all', async (req, res) => {
   const data = await DBProducts.removeAllProducts(user_id);
   res.send(data)
 })
+
+// this is my ejs render 
+
+// res.render('login', {
+//   title: 'Login Page',
+//   userName: 'John' 
+// });
+
