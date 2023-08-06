@@ -30,35 +30,53 @@
         </div>
     </div>
     <div id="flex-container">
-        <div id="flex-item">
+         <!-- EJS for loop added here -->
+    <% mangaList.forEach(function(manga) { %>
+
+        <!-- <div id="flex-item"> -->
+          
+          <!-- Image ID and source dynamic with EJS -->
+          <img id="<%= manga.id %>" src="<%= manga.image %>">
+          
+          <div id="title">
+            
+            <!-- Manga name dynamic with EJS -->  
+            <b><%= manga.name %></b>
+            
+          </div>
+        </div>
+  
+      <% }) %>
+        
+        <!-- <div id="flex-item"> -->
             <img id="naruto" src="images/naruto-wallpaper-naruto-wallpaper-hd.webp">
             <div id="title"><b>NARUTO</b></div>
         </div>
-        <div id="flex-item">
+        <!-- <div id="flex-item"> -->
             <img id="bleach" src="images/bleach wallpaper.jpeg">
             <div id="title"><b>BLEACH</b></div>
         </div>
-        <div id="flex-item">
+        <!-- <div id="flex-item"> -->
             <img id="op" src="images/one piece wallpaper.jpeg">
             <div id="title"><b>ONE PIECE</b></div>
         </div>
-        <div id="flex-item">
+        <!-- <div id="flex-item"> -->
             <img id="fma" src="images/FMAB-I-made-FullmetalAlchemist-iphone-14-plus.jpeg">
             <div id="title"><b>FULL METAL ALCHEMIST</b></div>
         </div>
-        <div id="flex-item">
+        <!-- <div id="flex-item"> -->
             <img id="orange" src="images/Orange_Manga.jpeg">
             <div id="title"><b>ORANGE</b></div>
         </div>
-        <div id="flex-item">
+        <!-- <div id="flex-item"> -->
             <img id="kings" src="images/Kings_Game_Origin_Manga.jpeg">
             <div id="title"><b>KING'S GAME: ORIGIN</b></div>
         </div>
-        <div id="flex-item">
+        <!-- <div id="flex-item"> -->
             <img id="gi" src="images/Genshin_Impact_Manga.jpeg">
             <div id="title"><b>GENSHIN IMPACT</b></div>
         </div>
-        <div id="flex-item">
+        <!-- <div id="flex-item"> -->
             <img id="rest" src="images/Restaurant_to_Another_World_Manga.jpeg">
             <div id="long"><b>RESTAURANT TO ANOTHER WORLD</b></div>
         </div>
