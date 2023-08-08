@@ -9,7 +9,7 @@ body { /* going for a diagonal linear gradient with transitions between multiple
     background-repeat: no-repeat;
 }
 
-#nav-bar {
+.nav-bar {
     display: flex;
     flex-direction: row;
     width: auto;
@@ -42,7 +42,7 @@ h1 {
     font-size: 10px;
 }
 
-#search-bar {
+.search-bar {
     display: flex;
     justify-content: center;
     /*border: black solid;*/
@@ -53,7 +53,7 @@ h1 {
     margin-right: 10px;
 }
 
-#search {
+.search {
     width: 20em;
     border: none;
     background-color: none;
@@ -63,8 +63,7 @@ h1 {
     margin-left: 10px;
     font-size: 10px;
 }
-
-#flex-container {
+.flex-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -73,18 +72,20 @@ h1 {
     /*border: black solid;*/
     align-items: center;
     justify-content: center;
+    width: 80%;
+    margin-top: 4em;
 }
 
-#flex-item {
+.flex-item {
     width: 300px;
     height: 300px;
-    margin: 1em;
+    margin-right: 4em;
+    margin-bottom: 9em;
     border-radius: 25px;
-    background-color: white;
+    background-color: white; 
 }
 
-#title {
-    margin-left: 20px;
+.title, .price {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -94,9 +95,16 @@ h1 {
     font-family: 'Montserrat', sans-serif;
 }
 
-#naruto, #bleach, #op, #fma, #orange, #kings, #gi, #rest {
+.mangaImg {
     width: 260px;
     height: 260px;
     margin-left: 20px;
     margin-top: 20px;
+    border-radius: 2%;
+}
+
+.flex-subText {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
 }

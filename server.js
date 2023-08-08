@@ -1,5 +1,6 @@
 const express = require('express');
 const server = express();
+const path = require("path") 
 const DBUsers = require('./users');
 const DBProducts = require('./products');
 const helper = require('./helper')
@@ -9,6 +10,7 @@ const port= 4000;
 server.use(express.json());
 server.use(express.urlencoded({extended: true}));
 server.set('view engine', 'ejs'); // Set EJS as the template engine
+server.use('/static', express.static(path.join(__dirname, 'public')));
 
 // Add session middleware
 server.use(session({
@@ -19,6 +21,36 @@ server.use(session({
 }));
 
 // USERS
+//registration  (righthere)
+// Route handler for serving the login page
+server.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// Route handler for the registration form submission
+server.post("/register", async (req, res) => {
+  const userData = req.body;
+
+  //  user registration  here, save the user data to the database
+  // ...
+
+  // Redirect the user to the login page after successful registration
+  res.redirect("/login"); // Redirect to the login page, not "/loginLanding"
+});
+
+// Route handler for serving the registration page
+server.get("/registration", (req, res) => {
+  res.render("registration");
+});
+
+//registration
+
+
+
+
+
+
+
 server.get("/userbyid/:id", async (req, res) => {
     const userId = Number(req.params.id);
     console.log(userId)
@@ -33,10 +65,16 @@ server.get("/user/search/:username", async (req, res) => {
     res.send(users);
 }); 
 
+server.get("/loginLanding", async (req, res) => {
+  res.render('login');
+})
+
+
 /* The code snippet is defining a route handler for the POST request to "/login". It is expecting the
 request body to contain login data, which typically includes a username/email and password. */
 server.post("/login", async (req, res) => {
     const loginData = req.body;
+    console.log(loginData)
     const user = await DBUsers.loginUser(loginData);
     // authenticate and set user in session 
     if (user) {
@@ -134,7 +172,7 @@ server.listen(port, () => { console.log("server is running on port 4000");
 // product
 
 // this should Get all products
-server.get('/products/search/', async (req, res) => {
+server.get('/products/search', async (req, res) => {
   let { limit, pageNumber , title} = req.query;
 
   const products = await DBProducts.searchProductsByTitle(title);
@@ -144,7 +182,7 @@ server.get('/products/search/', async (req, res) => {
   } 
 
   const results = helper.paginate(Number(limit), Number(pageNumber), products);
-  res.render('search', { results });
+  res.render('products', { mangaList:results });
 });
 
 server.get('/products/count/total', async (req, res) => {
@@ -211,10 +249,22 @@ server.post('/cart/remove/all', async (req, res) => {
   res.send(data)
 })
 
-// this is my ejs render 
 
-// res.render('login', {
-//   title: 'Login Page',
-//   userName: 'John' 
+
+
+// // Route handler for the registration form submission
+// server.post("/register", async (req, res) => {
+//   const userData = req.body;
+
+//   // Implement user registration logic here, save the user data to the database
+//   // ...
+
+//   // Redirect the user to the login page after successful registration
+//   res.redirect("/login");
+// });
+
+// // Route handler for serving the registration page
+// server.get("/registration", (req, res) => {
+//   res.render("registration");
 // });
 
