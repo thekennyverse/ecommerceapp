@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/ecommerceapp/public/css/products-styles.css">
+    <title>Products</title>
+</head>
+<body>
+    
+    <div class="nav-bar">
+        <div>
+            <img src="/ecommerceapp/public/images/panda.webp" id="logo">
+        </div>
+        <div>
+            <h1>MANGA BEAR</h1>
+        </div>
+        <div id="login-icon">
+            <a href="/loginLanding">
+                <img src="/ecommerceapp/public/images/icons8-user-50.png" alt="login-icon" id="person">
+            </a>
+        </div>
+    </div>
+
+    <form class="search-bar" id="searchForm" action="/products/search" method="GET">
+        <input class="search" type="text" name="title" placeholder="Find Manga">
+        <input type="submit" value="Search">
+    </form>
+ 
+    <div class="flex-container">
+        <% mangaList.forEach(function(item){ %>
+            <div class="flex-item">
+                <img class="mangaImg" src="<%= item.picture_url %>">
+                <div class="flex-subText">
+                    <h3 class="title">
+                        <%= item.title %>
+                    </h3>
+                    <h3 class="price"> 
+                        $<%= item.price %>
+                    </h3>
+                </div>
+
+
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
