@@ -1,7 +1,13 @@
 /*Styles for Login page*/
 
+/*For mobile phones*/
 html {
+    width: 100%;
     height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 body { /* going for a diagonal linear gradient with transitions between multiple colors*/
@@ -10,12 +16,12 @@ body { /* going for a diagonal linear gradient with transitions between multiple
 }
 
 #box { /* here we want a box with rounded edges, thin white border, and no background*/
-    width: 30%;
-    height: 50%;
+    width: 12rem;
+    height: 12rem;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
-    padding: 10px;
+    margin-top: 10rem;
+    padding: 1rem;
     background: none;
     border-radius: 25px;
     border: 2px solid white;
@@ -26,38 +32,37 @@ body { /* going for a diagonal linear gradient with transitions between multiple
 
 img { /*panda bear logo*/
     width: 25%;
-    height: 25%;
-    margin-top: 3em;
-}
-
-hr { /*the lines*/
-    display: inline; /*block*/
-    width: 200px;
-    /*margin-top: 0.5em*/
-    margin-bottom: 0.5em;
-    margin-left: auto;
+    height: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     margin-right: auto;
-    overflow: hidden;
-    background-color: white;
-    border: 3px solid white;
-  }
-
-#line1 {
-    margin-top: 1em;
+    margin-left: auto;
 }
 
-#line2 {
-    margin-bottom: 3em;
-}
-
-#user, #pw {
+h1 {
     font-family: 'Montserrat', sans-serif;
-    color: white;
-    font-size: 20px;
+    font-size: 2rem;
+    display: flex;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: white; 
 }
 
-#user {
-    margin-top: 2em;
+label {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-size: 1rem;
+}
+
+input {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+}
+
+#password {
+    margin-bottom: 0.5rem;
 }
 
 #login-button {
@@ -68,8 +73,61 @@ hr { /*the lines*/
     margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
-    padding: 10px 30px;
-    font-size: 20px;
-    border-radius: 20px;
-    font-family:'Verdana', sans-serif /*might change this font later*/
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    font-family:'Verdana', sans-serif;
+}
+
+#login-button:is(:hover, :focus) {
+    box-shadow: 0 0 3px 3px;
+}
+
+#welcome {
+    display: flex;
+    margin-top: 5rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* xs */
+@media (min-width: 475px) {
+    html {
+        max-width: 475px;
+    }
+}
+
+/* sm */
+@media (min-width: 640px) {
+    html {
+        max-width: 640px;
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    html {
+        max-width: 768px;
+    }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    html {
+        max-width: 1024px;
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    html {
+        max-width: 1280px;
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    html {
+        max-width: 1536px;
+    }
 }
