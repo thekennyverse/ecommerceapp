@@ -1,4 +1,4 @@
-/*Styles for Startpage*/
+/*Styles for Registration page*/
 
 /*For mobile phones*/
 html {
@@ -35,6 +35,9 @@ img { /*panda bear logo*/
     height: 30%;
     margin-top: 0.5em;
     margin-bottom: 0.5rem;
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
 }
 
 #manga {
