@@ -13,21 +13,32 @@
         rel="stylesheet">
     <title>Login</title>
 </head>
-
 <body>
-    <div id="loginUser">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-    
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    
-        <!-- <input type="submit" value="Submit"> -->
-        <button onclick="loginUser()">Submit</button>
-    <% if (userName) { %>
-        <h4>Welcome <%= userName %>!</h4>
-      <% } %>
     <div id="box">
+        <img src="/ecommerceapp/public/images/panda.webp">
+        <h1>Login</h1>
+        <div id="loginUser">
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+            </form>
+        </div>  
+    </div>
+
+    <!-- <input type="submit" value="Submit"> -->
+    <button onclick="loginUser()" id="login-button" type="submit">Submit</button>
+
+    <div id="welcome">
+        <% if (userName) { %>
+            <h4>Welcome <%= userName %>!</h4>
+        <% } %>
+    </div>
+
+
         <!--<img src="/panda.webp">-->
         <!--<h1 id="user">USERNAME</h1>
         <hr id="line1">
@@ -43,13 +54,6 @@
                 <input type="submit" value="Login">
             </fieldset>
         </form>-->
-
-        <form>
-            <div class="imgcontainer">
-                <img src="/ecommerceapp/images/panda.webp">
-            </div>
-        </form>
-    </div>
 
     <script src="/static/js/login.js"></script>
 

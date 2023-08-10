@@ -1,21 +1,27 @@
 /*Styles for Startpage*/
 
+/*For mobile phones*/
 html {
-    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5 rem;
+    padding-right: 0.5 rem;
+    height: 100%; /*originally by itself*/
 }
 
 body { /* going for a diagonal linear gradient with transitions between multiple colors*/
-    background-image: linear-gradient(to top right, #bffc80, #5ffa91, #04f9bc, #02f0e3);
+    background-image: linear-gradient(to top right, #bffc80, #5ffa91, #04f9bc, #02f0e3); 
     background-repeat: no-repeat;
 }
 
-#box { /* here we want a box with rounded edges, thin white border, and no background*/
-    width: 50%;
-    height: 50%;
+#box {
+    width: 12rem; /*200px*/
+    height: 12rem; /*200px*/
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5%;
-    padding: 10px;
+    margin-top: 10rem; /*150px*/
+    padding: 1rem;
     background: none;
     border-radius: 25px;
     border: 2px solid white;
@@ -25,41 +31,36 @@ body { /* going for a diagonal linear gradient with transitions between multiple
 }
 
 img { /*panda bear logo*/
-    width: 20%;
-    height: 20%;
-    margin-top: 3em;
+    width: 30%;
+    height: 30%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5rem;
 }
 
-#manga { /* import custom web font*/
+#manga {
     font-family: 'Montserrat', sans-serif;
-    font-size: 5.5em;
-    display: inline;
+    font-size: 2rem; /*30px*/
+    display: flex; /*inline*/
     text-align: center;
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: 0;
 }
-
-/*#bear {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 79.8px;
-    display: inline;
-    margin-top: none;
-}*/
 
 hr {
-    display: inline; /*block*/
-    width: 300px;
-    /*margin-top: 0.5em*/
-    margin-bottom: 0.5em;
+    display: inline;
+    width: 7rem; /*150px*/
+    margin-top: 0;
+    margin-bottom: 0.5rem;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
     background-color: white;
-    border: 3px solid white;
-  }
+    border: 2px solid white;
+}
 
 #login {
     font-family: 'Montserrat', sans-serif;
-    font-size: 34px;
+    font-size: 1rem; /*17px*/
     color: white;
     display: inline;
     margin-top: 0;
@@ -67,37 +68,150 @@ hr {
 }
 
 #line1 {
-    margin-top: 1em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 #line2 {
-    margin-bottom: 3em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 #account {
     display: flex;
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 34px;
+    font-size: 1rem; /*17px*/
     font-weight: 100;
 }
 
-#user, #pw {
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    font-size: 20px;
+h4 {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem; /*100px*/
 }
 
-#login-button {
-    background-color: #02f0e3;
-    border: none;
-    color: white;
-    display: flex;
-    margin-top: 1em;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px 30px;
-    font-size: 20px;
-    border-radius: 20px;
-    font-family:'Verdana', sans-serif /*might change this font later*/
+   /* #user, #pw {
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        font-size: 20px;
+    }*/
+
+    /*#login-button {
+        background-color: #02f0e3;
+        border: none;
+        color: white;
+        display: flex;
+        margin-top: 1em;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px 30px;
+        font-size: 20px;
+        border-radius: 20px;
+        font-family:'Verdana', sans-serif /*might change this font later
+    }
+
+/*@media (max-width: 975px) {
+    #manga {
+        font-size: 4rem;
+    }
+}
+@media (max-width: 850px) {
+    #manga {
+        font-size: 3rem;
+    }
+}*/
+
+
+/* xs */
+@media (min-width: 475px) {
+    html {
+        max-width: 475px;
+    }
+    #manga {
+        font-size: 2.5rem;
+    }
+    #box {
+        width: 13.5rem;
+        height: 13.5rem;
+    }
+    #line1 {
+        margin-top: 0.25rem;
+    }
+    #login {
+        font-size: 1.25rem;
+    }
+    #account {
+        font-size: 1.5rem;
+    }
+}
+
+/* sm */
+@media (min-width: 640px) {
+    html {
+        max-width: 640px;
+    }
+    #manga {
+        font-size: 3rem;
+    }
+    #box {
+        width: 15rem;
+        height: 15rem;
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    html {
+        max-width: 768px;
+    }
+    #manga {
+        font-size: 3.5rem;
+    }
+    #box {
+        width: 16.5rem;
+        height: 16.5rem;
+    }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    html {
+        max-width: 1024px;
+    }
+    #manga {
+        font-size: 4rem;
+    }
+    #box {
+        width: 18rem;
+        height: 18rem;
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    html {
+        max-width: 1280px;
+    }
+    #manga {
+        font-size: 4.5rem;
+    }
+    #box {
+        width: 19.5rem;
+        height: 19.5rem;
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    html {
+        max-width: 1536px;
+    }
+    #manga {
+        font-size: 5rem;
+    }
+    #box {
+        width: 21rem;
+        height: 21rem;
+    }
 }
