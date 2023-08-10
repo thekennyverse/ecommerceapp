@@ -5,7 +5,7 @@ const findUserById = async (id) => {
 };
 
 const findUserByUsername = async (username) => {
-    return db.any('SELECT * from users WHERE username=$1', username);
+    return db.any('SELECT * from users WHERE username ILIKE $1', username);
 };
 
 
@@ -25,7 +25,7 @@ const createUser = async (userData) => {
     const { username, email, password_hash, full_name, address, city, country, postal_code } = userData;
     const created_at = new Date();
     await db.any(`INSERT INTO users ( username, email, password_hash, full_name, address, city, country, postal_code, created_at) VALUES
-    ($1, $2, $3, $4, $5, $6, $7, $8, $9);`, [username.toLowerCase(), email, password_hash, full_name, address, city, country, postal_code, created_at]);
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9);`, [username, email, password_hash, full_name, address, city, country, postal_code, created_at]);
     return username;
 }
 
@@ -33,7 +33,7 @@ const createUser = async (userData) => {
 const updateUser = async (userData) => {
     const { username, email, password_hash, full_name, address, city, country, postal_code, user_id } = userData;
     await db.any(`UPDATE users SET username = $1, email = $2, password_hash = $3, full_name = $4, address = $5, city = $6, country = $7, postal_code = $8 WHERE user_id = $9`,
-    [username.toLowerCase(), email, password_hash, full_name, address, city, country, postal_code, user_id]);
+    [username, email, password_hash, full_name, address, city, country, postal_code, user_id]);
     return username;
 }
 

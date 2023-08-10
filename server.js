@@ -27,15 +27,13 @@ server.get("/login", (req, res) => {
   res.render("login");
 });
 
-// Route handler for the registration form submission
+// Route handler for the registration form submission registration info
 server.post("/register", async (req, res) => {
   const userData = req.body;
 
-  //  user registration  here, save the user data to the database
-  // ...
 
   // Redirect the user to the login page after successful registration
-  res.redirect("/login"); // Redirect to the login page, not "/loginLanding"
+  res.redirect("/login"); // Redirect to the login page, not "/
 });
 
 // Route handler for serving the registration page
@@ -43,11 +41,7 @@ server.get("/registration", (req, res) => {
   res.render("registration");
 });
 
-//registration
-
-
-
-
+//the registration end point 
 
 
 
@@ -106,7 +100,9 @@ server.get('/dashboard', (req, res) => {
     const { user } = req.session;
   
     if (user) {
-      res.statusCode = 200;
+      res.statusCo/* In the given code, `d` is not doing anything. It is not declared or used anywhere
+      in the code. */
+      de = 200;
   
       const result = {
           status: res.statusCode,
@@ -129,8 +125,11 @@ server.get('/dashboard', (req, res) => {
   //Create user
 server.post("/user", async (req, res) => {
     const userData = req.body;
+    console.log(userData)
     const username = await DBUsers.createUser(userData);
+    console.log(username)
     const user = await DBUsers.findUserByUsername(username);
+    console.log(user)
     res.send(user);
 });
 
@@ -251,20 +250,4 @@ server.post('/cart/remove/all', async (req, res) => {
 
 
 
-
-// // Route handler for the registration form submission
-// server.post("/register", async (req, res) => {
-//   const userData = req.body;
-
-//   // Implement user registration logic here, save the user data to the database
-//   // ...
-
-//   // Redirect the user to the login page after successful registration
-//   res.redirect("/login");
-// });
-
-// // Route handler for serving the registration page
-// server.get("/registration", (req, res) => {
-//   res.render("registration");
-// });
 

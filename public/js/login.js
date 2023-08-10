@@ -33,10 +33,14 @@
 
 
 
+
+// const bcrypt = require('bcrypt'); // Import the bcrypt library
+
+// ...
+
 async function loginUser() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
-  const password_hash = password;
 
   const host = "http://localhost:4000";
   const url = `${host}/login`;
@@ -44,20 +48,25 @@ async function loginUser() {
     'Content-Type': 'application/json'
   };
   const method = "POST";
-  const body = JSON.stringify({ username, password_hash });
 
-  try {
-    const response = await fetch(url, { method, headers, body });
-    const data = await response.json();
+  // Hash the password before sending it to the server
+  // const hashedPassword = await hashPassword(password);
+  const hashedPassword = password
+  const body = JSON.stringify({ username, password_hash: hashedPassword });
 
-    if (response.ok) {
-      console.log("Login successful:", data);
-      // Redirect to the product page after successful login
-      window.location.href = `${host}/products/search?title=`;
-    } else {
-      console.error("Login failed:", data.message);
-    }
-  } catch (error) {
-    console.error("Error during login:", error);
+  const response = await fetch(url, { method, headers, body });
+  const data = await response.json();
+
+  if (response.ok) {
+    console.log("Login successful:", data);
+    // Redirect to the correct product page after successful login
+    window.location.href = `${host}/products/search?title=`;// Change to the actual product page endpoint
+  } else {
+    console.error("Login failed:", data.message);
   }
 }
+
+// async function hashPassword(password) {
+//   const saltRounds = 10;
+//   return await bcrypt.hash(password, saltRounds);
+// }

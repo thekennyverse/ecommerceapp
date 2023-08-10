@@ -7,14 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/static/css/registration.css">
 
-  
+  //http://localhost:4000/registration
 
   <title>Register</title>
 </head>
 
 <body>
   <h1>Register</h1>
-  <form action="/register" method="POST">
+  <div>
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required>
 
@@ -27,12 +27,12 @@
     <label for="full_name">Full Name:</label>
     <input type="text" id="full_name" name="full_name" required>
 
-    <button type="submit">Register</button>
-  </form>
+    <button onclick="registerUser()">Submit</button>
+  </div>
 
   <p>Already have an account? <a href="/login">Login here</a></p>
 
-  <script>
+  <script src="/static/js/registration.js">
     
   </script>
 </body>
