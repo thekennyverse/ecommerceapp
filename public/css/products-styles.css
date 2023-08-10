@@ -37,7 +37,7 @@ h1 {
 }
 
 #login-icon { /*can't seem to be able to adjust the size*/
-    margin-top: 1em;
+    margin: 1em;
     width: 40px;
     height: 20px;
 }
@@ -83,7 +83,7 @@ h1 {
     flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
-    border: black solid;
+    border: black solid; /*just use to visualize code changes*/
     align-items: center;
     justify-content: center;
     width: 22rem;
@@ -123,4 +123,88 @@ h1 {
     display: flex;
     justify-content: space-between;
     margin-top: 1em;
+}
+
+/* xs */
+@media (min-width: 475px) {
+    html {
+        max-width: 475px;
+    }
+}
+
+/* sm */
+@media (min-width: 640px) {
+    html {
+        max-width: 640px;
+    }
+    #logo {
+        width: auto;
+        height: 3rem;
+        margin: 1rem;
+    }
+    h1 {
+        font-size: 3rem;
+        margin-top: 1.25rem;
+    }
+    #login-icon {
+        margin: 1em;
+        width: 50px;
+        height: 30px;
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    html {
+        max-width: 768px;
+    }
+    #logo {
+        width: auto;
+        height: 3.5rem;
+        margin: 1rem;
+    }
+    h1 {
+        font-size: 3.5rem;
+        margin-top: 1.25rem;
+    }
+    #login-icon {
+        margin: 1em;
+        width: 60px;
+        height: 40px;
+    }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    html {
+        max-width: 1024px;
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    html {
+        max-width: 1280px;
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    html {
+        max-width: 1536px;
+    }
+    #logo {
+        width: auto;
+        height: 4rem;
+        margin: 1rem;
+    }
+    h1 {
+        font-size: 4rem;
+        margin-top: 1.25rem;
+    }
+    #login-icon {
+        margin: 1em;
+        width: 70px;
+        height: 50px;
+    }
 }
