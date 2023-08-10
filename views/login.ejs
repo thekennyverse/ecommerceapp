@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/ecommerceapp/public/css/login-styles.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -24,9 +24,10 @@
     
         <!-- <input type="submit" value="Submit"> -->
         <button onclick="loginUser()">Submit</button>
-    <% if (userName) { %>
-        <h4>Welcome <%= userName %>!</h4>
-      <% } %>
+        <button onclick="loginUser()">Submit</button>
+    <% if (username) { %>
+        <h4>Welcome <%= username %>!</h4>
+    <% } %>
     <div id="box">
         <!--<img src="/panda.webp">-->
         <!--<h1 id="user">USERNAME</h1>
@@ -46,7 +47,7 @@
 
         <form>
             <div class="imgcontainer">
-                <img src="/ecommerceapp/images/panda.webp">
+                <img src="/static/images/panda.webp">
             </div>
         </form>
     </div>

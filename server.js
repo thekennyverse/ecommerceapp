@@ -23,9 +23,21 @@ server.use(session({
 // USERS
 //registration  (righthere)
 // Route handler for serving the login page
+// server.get("/login", (req, res) => {
+//   res.render("login");
+// });
 server.get("/login", (req, res) => {
-  res.render("login");
+  // You should fetch the username from the session or wherever you store it
+  const username = req.session.user ? req.session.user.username : null;
+  res.render("login", { username }); // Pass the username variable to the template
 });
+
+
+
+
+
+
+
 
 // Route handler for the registration form submission registration info
 server.post("/register", async (req, res) => {
@@ -60,8 +72,14 @@ server.get("/user/search/:username", async (req, res) => {
 }); 
 
 server.get("/loginLanding", async (req, res) => {
-  res.render('login');
+  const { user } = req.session;
+  res.render('login', {username : user?.username});
 })
+server.get("/homeLanding", async (req, res) => {
+  const { user } = req.session;
+  res.render('index', {username : user?.username});
+})
+
 
 
 /* The code snippet is defining a route handler for the POST request to "/login". It is expecting the
@@ -71,8 +89,8 @@ server.post("/login", async (req, res) => {
     console.log(loginData)
     const user = await DBUsers.loginUser(loginData);
     // authenticate and set user in session 
-    if (user) {
-        req.session.user = user;
+    if (user?.length > 0) {
+        req.session.user = user[0];   // whenever anyone login in it gets saved to request.session
         res.statusCode = 200;
 
         const result = {
@@ -100,9 +118,7 @@ server.get('/dashboard', (req, res) => {
     const { user } = req.session;
   
     if (user) {
-      res.statusCo/* In the given code, `d` is not doing anything. It is not declared or used anywhere
-      in the code. */
-      de = 200;
+      res.statusCode = 200;
   
       const result = {
           status: res.statusCode,
@@ -125,11 +141,8 @@ server.get('/dashboard', (req, res) => {
   //Create user
 server.post("/user", async (req, res) => {
     const userData = req.body;
-    console.log(userData)
     const username = await DBUsers.createUser(userData);
-    console.log(username)
     const user = await DBUsers.findUserByUsername(username);
-    console.log(user)
     res.send(user);
 });
 
@@ -143,7 +156,6 @@ server.patch("/user", async (req, res) => {
         ...originalUserData[0],
         ...newUserData
     }
-    console.log("NEW DATA", updatedUser)
     const username = await DBUsers.updateUser(updatedUser);
     const user = await DBUsers.findUserByUsername(username);
     res.send(user);
@@ -173,6 +185,7 @@ server.listen(port, () => { console.log("server is running on port 4000");
 // this should Get all products
 server.get('/products/search', async (req, res) => {
   let { limit, pageNumber , title} = req.query;
+  const { user } = req.session;
 
   const products = await DBProducts.searchProductsByTitle(title);
   if ((!limit || limit < 1) || (!pageNumber || pageNumber < 1)){
@@ -181,7 +194,7 @@ server.get('/products/search', async (req, res) => {
   } 
 
   const results = helper.paginate(Number(limit), Number(pageNumber), products);
-  res.render('products', { mangaList:results });
+  res.render('products', { mangaList:results, username : user?.username });
 });
 
 server.get('/products/count/total', async (req, res) => {
